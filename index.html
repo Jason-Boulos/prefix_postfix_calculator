@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prefix/Postfix Calculator</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class=" navbar">
+        <a href="#" class="navbar-logo">Calc</a>
+        <div class="navbar-menu">
+            <a href="#calculator">Calculator</a>
+            <a href="#educational-section">Guide</a>
+        </div>
+    </nav>
+
+    <div class="title">
+        <h1>Prefix/Postfix Expression Calculator</h1>
+    </div>
+
+    <div class="calculator">
+        <div class="mode-selector">
+            <button  class="prifix-mode">Prefix</button>
+            <button  class="postfix-mode">Postfix</button>
+        </div>
+        <input type="text" class="display" >
+            <div class="buttons">
+                <button class="button">7</button>
+                <button class="button">8</button>
+                <button class="button">9</button>
+                <button class="button operator">+</button>
+                
+                <button class="button">4</button>
+                <button class="button">5</button>
+                <button class="button">6</button>
+                <button class="button operator">-</button>
+                
+                <button class="button">1</button>
+                <button class="button">2</button>
+                <button class="button">3</button>
+                <button class="button operator">*</button>
+                
+                <button class="button clear">C</button>
+                <button class="button">0</button>
+                <button class="button equals">=</button>
+                <button class="button operator">/</button>
+        </div>
+        </div>
+    </div>
+   
+    <div  id="educational-section" class="educational-section">
+        <div class=" educational-container">
+            <h1 class=" section-title">Small Guide</h1>
+            <div class="section">
+                <h2>Prefix Evaluation</h2>
+                <p>Expression: + 9 * 2 3</p>
+                <ol>
+                    <li>Start from the rightmost operand</li>
+                    <li>Evaluate * 2 3 → 6</li>
+                    <li>Add 9 + 6 = 15</li>
+                    <li>Final Result: 15</li>
+                </ol>
+            </div>
+            <div class="section">
+                <h2>Postfix Evaluation</h2>
+                <p>Expression: 9 2 3 * +</p>
+                <ol>
+                    <li>First operator *: 2 * 3 = 6</li>
+                    <li>Add 9 + 6 = 15</li>
+                    <li>Final Result: 15</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
