@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+/* default/ dark mode styling */
 body {
     font-family: sans-serif;
     display: flex;
@@ -157,3 +158,79 @@ body {
     font-size: 14px;
 }
 
+
+
+
+/* Light Mode Styles */
+body.light-mode {
+    background: #f9fafb;
+    color: #2a2e35;
+}
+body.light-mode .navbar {
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+
+body.light-mode .navbar-logo {
+    color: #2b3748;
+}
+
+body.light-mode .navbar-menu a {
+    color: #4a5568;
+}
+body.light-mode .calculator {
+    background-color: #ffffff;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.07);
+    border: 1px solid #e2e8f0;
+}
+
+
+body.light-mode .display {
+    background-color: #f7fafc;
+    color: #2a2e35;
+    border: 1px solid #d1d5db;
+}
+
+body.light-mode .mode-selector button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+body.light-mode .button {
+    background-color: #f1f5f9;
+    color: #334155;
+    border: 1px solid #e2e8f0;
+}
+
+body.light-mode .button.operator {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+body.light-mode .button.clear {
+    background-color: #ef4444;
+    color: #ffffff;
+}
+
+body.light-mode .button.equals {
+    background-color: #8b5cf6;
+    color: #ffffff;
+}
+
+body.light-mode .educational-section {
+    background-color: #f9fafb;
+}
+
+body.light-mode .section {
+    background-color: #ffffff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+}
+
+body.light-mode .section h2 {
+    color: #2563eb;
+}
