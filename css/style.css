@@ -161,7 +161,7 @@ body {
 
 
 
-/* Light Mode Styles */
+/* Light Mode Styling */
 body.light-mode {
     background: #f9fafb;
     color: #2a2e35;
@@ -233,4 +233,20 @@ body.light-mode .section {
 
 body.light-mode .section h2 {
     color: #2563eb;
+}
+
+
+/* mobile responsivness */
+@media (max-width: 768px) {
+
+    .educational-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .section {
+        width: 100%;
+        padding: 15px;
+    }
+
+
 }
