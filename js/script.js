@@ -84,7 +84,16 @@ function isValidExpression(element){
         return false
     }
 
-    if(element.length < 3){
+    for(const i of element) {
+        
+        // array of all valid elements a user can have
+        if (!['+', '-', '*', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(i)) {
+            displayError('Invalid character.only numbers and operators are allowed.');
+            return false;
+        }
+    }
+    // Check if there are enough elements for a valid expression
+    if (element.length < 3) {
         displayError('Ensure you have 2 numbers and 1 operator in correct order');
         return false
     }
