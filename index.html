@@ -26,6 +26,7 @@
             <button id="postfixMode" class="postfix-mode">Postfix</button>
         </div>
         <input type="text" class="display" id="display" placeholder="" >
+        <button onclick="clearDisplay()" class="button clear">C</button>
         <div class="error" id="errorDisplay"></div>
             <div class="buttons">
                 <button onclick="appendToDisplay('7')" class="button">7</button>
@@ -43,7 +44,7 @@
                 <button onclick="appendToDisplay('3')"class="button">3</button>
                 <button onclick="appendToDisplay('*')"class="button operator">*</button>
                 
-                <button onclick="clearDisplay()"class="button clear">C</button>
+                <button onclick="appendToDisplay(' ')"class="button operator">space</button>
                 <button onclick="appendToDisplay('0')"class="button">0</button>
                 <button  onclick="calculateResult()"class="button equals">=</button>
                 <button onclick="appendToDisplay('/')" class="button operator">/</button>

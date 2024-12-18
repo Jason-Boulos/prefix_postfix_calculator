@@ -96,8 +96,17 @@ body {
     background-color: #4299e1;
 }
 
+
 .button.clear {
+    width: 35px;
+    height: 31px;
     background-color: #f16400;
+    color: #e2e8f0;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    padding: 5px;
+    cursor: pointer;
 }
 
 .button.equals {
