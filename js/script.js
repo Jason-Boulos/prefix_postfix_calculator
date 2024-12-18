@@ -57,13 +57,43 @@ postfixModeBtn.addEventListener('click',() =>switchMode(postfixModeBtn))
 function calculateResult() {
     const expression = display.value.trim();
     const expression_parts = expression.split('');  
+    if(!isValidExpression(expression_parts)){
+        display.value="";
+        return
+    }
     const result = calculate(expression_parts);
 
    
     display.value = result;
 }
 
+function isValidExpression(element){
 
+    if(element.length < 3){
+        alert('not enough numbers')
+        return false
+    }
+     let numbers_count = 0
+     let operator_count = 0
+
+     for(const i of element){
+        if( i === '+'|| i ==="-" || i === '*' || i ==='/'){
+            operator_count++
+        }
+        else{
+            numbers_count++
+        }
+     }
+
+     if(numbers_count !== operator_count + 1){
+          alert('incorrect number of operators')
+          return false
+     }
+
+    return true;
+
+
+}
 
 // function that calculates postfix and prefix expressions
 function calculate(input){
@@ -86,7 +116,7 @@ for (const element of expression) {
     else {
       // If the element is an operator make sure there are enough numbers
       if (stack.length < 2) {
-        alert('Not enough numbers');
+        alert('Not enough numberssss');
         return null;
       }
 
