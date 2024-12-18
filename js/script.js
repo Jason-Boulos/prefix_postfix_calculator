@@ -1,6 +1,6 @@
-
+// global variables
 const theme_changer_btn = document.getElementById("dark/light-mode");
-
+const display =  document.getElementById("display")
 
 
 
@@ -15,6 +15,16 @@ theme_changer_btn.addEventListener("click",function(){
         this.textContent = '🌙 Dark Mode';
     }
 });
+
+
+// function to append to the display
+function appendToDisplay(value){
+    display.value += value
+}
+// function to clear the display 
+function clearDisplay() {
+    display.value = '';
+}
    
 
 
