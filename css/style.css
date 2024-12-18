@@ -121,6 +121,10 @@ body {
     font-size: 16px;
 }
 
+.mode-selector button.active {
+    background-color: #0015ff;
+}
+
 .educational-section {
     width: 100%;
     padding: 20px 20px; 
@@ -198,6 +202,10 @@ body.light-mode .mode-selector button {
     border: none;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+body.light-mode .mode-selector button.active{
+    background-color: #00f2ff;
+
+}
 
 
 body.light-mode .button {
@@ -205,6 +213,9 @@ body.light-mode .button {
     color: #334155;
     border: 1px solid #e2e8f0;
 }
+
+
+
 
 body.light-mode .button.operator {
     background-color: #2563eb;
