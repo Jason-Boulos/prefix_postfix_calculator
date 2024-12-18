@@ -65,7 +65,8 @@ postfixModeBtn.addEventListener('click',() =>switchMode(postfixModeBtn))
 // function to  calculate and display the result
 function calculateResult() {
     const expression = display.value.trim();
-    const expression_parts = expression.split('');  
+    const expression_parts = expression.split('').filter(emptyIndex => emptyIndex !== ' ');
+   
     if(!isValidExpression(expression_parts)){
         display.value="";
         return
@@ -73,9 +74,11 @@ function calculateResult() {
     const result = calculate(expression_parts);
 
    
-    display.value = result;
+    if (result !== null) {
+        display.value = result;
+    }
 }
-
+ 
 // function that checks if the expression is valid
 function isValidExpression(element){
 
@@ -85,7 +88,7 @@ function isValidExpression(element){
     }
 
     for(const i of element) {
-        
+
         // array of all valid elements a user can have
         if (!['+', '-', '*', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(i)) {
             displayError('Invalid character.only numbers and operators are allowed.');
@@ -140,7 +143,7 @@ for (const element of expression) {
     else {
       // If the element is an operator make sure there are enough numbers
       if (stack.length < 2) {
-        displayError('Not enough numbers');
+        displayError('you need two numbers before an operator');
         return null;
       }
 
