@@ -4,6 +4,7 @@ const theme_changer_btn = document.getElementById("dark/light-mode");
 const display =  document.getElementById("display");
 const prefixModeBtn = document.getElementById('prefixMode');
 const postfixModeBtn = document.getElementById('postfixMode');
+const errorDisplay =  document.getElementById('errorDisplay')
 
 
 
@@ -24,9 +25,16 @@ theme_changer_btn.addEventListener("click",function(){
 function appendToDisplay(value){
     display.value += value
 }
+
 // function to clear the display 
 function clearDisplay() {
     display.value = '';
+    errorDisplay.textContent= '';
+}
+
+//function to display errors
+function displayError(message) {
+    errorDisplay.textContent = message;
 }
 
 // set prefix mode as active by default
@@ -53,6 +61,7 @@ prefixModeBtn.addEventListener('click',()=>switchMode(prefixModeBtn));
 postfixModeBtn.addEventListener('click',() =>switchMode(postfixModeBtn))
    
 
+
 // function to  calculate and display the result
 function calculateResult() {
     const expression = display.value.trim();
@@ -67,10 +76,16 @@ function calculateResult() {
     display.value = result;
 }
 
+// function that checks if the expression is valid
 function isValidExpression(element){
 
+    if(element.length === 0){
+        displayError('please enter a expression');
+        return false
+    }
+
     if(element.length < 3){
-        alert('not enough numbers')
+        displayError('Ensure you have 2 numbers and 1 operator in correct order');
         return false
     }
      let numbers_count = 0
@@ -84,9 +99,9 @@ function isValidExpression(element){
             numbers_count++
         }
      }
-
+     // if operator counts +1 is not equal to the numbers count there is a error
      if(numbers_count !== operator_count + 1){
-          alert('incorrect number of operators')
+          displayError('Incorrect expression format')
           return false
      }
 
@@ -116,7 +131,7 @@ for (const element of expression) {
     else {
       // If the element is an operator make sure there are enough numbers
       if (stack.length < 2) {
-        alert('Not enough numberssss');
+        displayError('Not enough numbers');
         return null;
       }
 
@@ -130,7 +145,7 @@ for (const element of expression) {
         case "*": result = a * b; break;
         case "/": 
             if (b === 0) {
-                alert('Cannot divide by 0');
+                displayError('Cannot divide by 0');
                 return null;
             }
             result = a / b; 
