@@ -62,22 +62,6 @@ postfixModeBtn.addEventListener('click',() =>switchMode(postfixModeBtn))
    
 
 
-// function to  calculate and display the result
-function calculateResult() {
-    const expression = display.value.trim();
-    const expression_parts = expression.split('').filter(emptyIndex => emptyIndex !== ' ');
-   
-    if(!isValidExpression(expression_parts)){
-        display.value="";
-        return
-    }
-    const result = calculate(expression_parts);
-
-   
-    if (result !== null) {
-        display.value = result;
-    }
-}
  
 // function that checks if the expression is valid
 function isValidExpression(element){
@@ -89,8 +73,8 @@ function isValidExpression(element){
 
     for(const i of element) {
 
-        // array of all valid elements a user can have
-        if (!['+', '-', '*', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(i)) {
+        // needs to be a number and can only use these operators
+       if (isNaN(i) && !['+', '-', '*', '/'].includes(i)) {
             displayError('Invalid character.only numbers and operators are allowed.');
             return false;
         }
@@ -122,16 +106,9 @@ function isValidExpression(element){
 
 }
 
-// function that calculates postfix and prefix expressions
-function calculate(input){
-  let expression;
-  // check if mode is set to prefix or postfix
-  if (isPrefix){
-    expression = input.reverse();
-  }
-  else{
-    expression = input;
-  }
+// function that calculates postfix expressions
+function calculatePostFix(input){
+  let expression = input;
 
 const stack = [];
 
@@ -170,6 +147,72 @@ for (const element of expression) {
    return stack[0];
 }
 
+// function that calculates  prefix expressions
+function calculatePrefix(input) {
+    const stack = [];
+    
+    // we need to  loop  from right to left
+    for(let i = input.length - 1; i >= 0; i--) {
+        const element = input[i];
+        
+        if (!isNaN(Number(element))) {
+            // check if element is number and push it to the stack
+            stack.push(Number(element));
+        } 
+        else {
+            // If the element is an operator make sure there are enough numbers
+            if (stack.length < 2) {
+                displayError('you need two numbers before an operator');
+                return null;
+            }
+
+            const a = stack.pop();
+            const b = stack.pop();
+
+            let result;
+            switch (element) {
+                case '+': result = a + b; break;
+                case "-": result = a - b; break;
+                case "*": result = a * b; break;
+                case "/": 
+                    if (b === 0) {
+                        displayError('Cannot divide by 0');
+                        return null;
+                    }
+                    result = a / b; 
+                    break;
+            }
+            stack.push(result);
+        }
+    }
+
+    return stack[0];
+}
+
+
+
+// function to  calculate and display the result
+function calculateResult() {
+    const expression = display.value.trim();
+    const expression_parts = expression.split(' ').filter(emptyIndex => emptyIndex !== ' ');
+   
+    if(!isValidExpression(expression_parts)){
+        display.value="";
+        return
+    }
+
+    let result;
+    if (isPrefix) {
+        result = calculatePrefix(expression_parts);
+    } else {
+        result = calculatePostFix(expression_parts);
+    }
+
+    if (result !== null) {
+        display.value = result;
+        errorDisplay.textContent = '';
+    }
+}
 
 
 
